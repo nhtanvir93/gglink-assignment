@@ -30,26 +30,26 @@ Tables
 Seeders
 
 1. GroupSeeder
-    a. id - 1, name - Default
-    b. id - 2, name - api_user_add
-    c. id - 3, name - api_user_delete
-    d. id - 4, name - api_user_detail
-    e. id - 5, name - api_user_all
-    f. id - 6, name - api_user_profile
-    g. id - 7, name - api_user_update
+    - id - 1, name - Default
+    - id - 2, name - api_user_add
+    - id - 3, name - api_user_delete
+    - id - 4, name - api_user_detail
+    - id - 5, name - api_user_all
+    - id - 6, name - api_user_profile
+    - id - 7, name - api_user_update
 
 
 
 Config
 
 1. custom_settings
-    a. is_registration_available - to star/stop registration
-    b. api_key
-    c. token_validity (minutes) - token last validity time in minutes
-    d. upload_paths.avatar - directory path where avatar will be uploaded
-    e. default_group_id - 1 (Default)
-    f. default_avatar_path - default_avatar.png (Stored in public directory and will be shown if no avatar given)
-    g. permissions - an array containing exception groups against requested uri
+    - is_registration_available - to star/stop registration
+    - api_key
+    - token_validity (minutes) - token last validity time in minutes
+    - upload_paths.avatar - directory path where avatar will be uploaded
+    - default_group_id - 1 (Default)
+    - default_avatar_path - default_avatar.png (Stored in public directory and will be shown if no avatar given)
+    - permissions - an array containing exception groups against requested uri
 
 
 
@@ -64,19 +64,19 @@ Middleware
 Exception
 
 1. File - app/Exceptions/Handler.php
-    a. ValidationException - If validation errors occured while adding, updating, deleting user, system will give response containing message 'ValidationError' with    status 422
-    b. AuthorizationException - It is mainly used to handle AuthorizationException of registration request when registration is off
+    - ValidationException - If validation errors occured while adding, updating, deleting user, system will give response containing message 'ValidationError' with    status 422
+    - AuthorizationException - It is mainly used to handle AuthorizationException of registration request when registration is off
 
 
 
-File Storage
+2. File Storage
     - Avatar will be stored in 'storage/app/public'
     - To access these avatar from web, symbolic link needs to be created which will help to access directory 'storage/app/public' from 'public/storage'
     - command to create symbolic link - php artisan storage:link
 
 
 
-Business Logic Architeture
+3. Business Logic Architeture
     - Controllers resides in API directory which will do main business logic funtionalities
     - Repositories in app/Repositories will do sql related works
     - Form request will filter the invalid store/update/delete requests
@@ -112,18 +112,18 @@ Tasks
 
 5. User Report
     1. Filter data will be following
-        a. ?Filter='email=example@gmail.com;username=test_user;group=1:2' (multiple group searching)
-        b. ?Filter='email=example@gmail.com;username=test_user;group=1'
+        - ?Filter='email=example@gmail.com;username=test_user;group=1:2' (multiple group searching)
+        - ?Filter='email=example@gmail.com;username=test_user;group=1'
     2. Field
-        a. If multiple field is given, it should match the exact column of users table
+        - If multiple field is given, it should match the exact column of users table
             - id, username, email
 
 6. Login
-    a. first search user data using username
-    b. if user is found, password will be check using Hash facade
-    c. if username and password are matched, then token will be created using Str::uuid
-    d. Then token and token_last_validity_timestamp will be updated for that user
+    - first search user data using username
+    - if user is found, password will be check using Hash facade
+    - if username and password are matched, then token will be created using Str::uuid
+    - Then token and token_last_validity_timestamp will be updated for that user
 
 7. Logout
-    a. If no logged in user is found according to 'X-TOKEN', logout will not be applicable
-    b. If logged in user is found, then token and token_last_validity_timestamp will be set to null for the requested logged in user
+    - If no logged in user is found according to 'X-TOKEN', logout will not be applicable
+    - If logged in user is found, then token and token_last_validity_timestamp will be set to null for the requested logged in user
