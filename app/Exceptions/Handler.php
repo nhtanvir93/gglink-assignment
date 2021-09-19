@@ -48,7 +48,7 @@ class Handler extends ExceptionHandler
             return response()->json([
                 'Status' => false,
                 'Message' => 'ValidationError'
-            ],Response::HTTP_NOT_FOUND);
+            ],Response::HTTP_UNPROCESSABLE_ENTITY);
         } elseif($exception instanceof AuthorizationException) {
             $uri = substr(request()->getPathInfo(),1);
 
