@@ -47,7 +47,7 @@ class AvatarRepository extends BaseRepository
         $this->remove($avatar->path);
         $path = $this->upload($file, $path);
 
-        return $this->update([
+        return parent::update([
             'path' => $path,
             'content_type' => $file->getClientMimeType(),
             'extension' => $file->extension(),
