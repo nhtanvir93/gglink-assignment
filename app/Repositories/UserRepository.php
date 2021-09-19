@@ -66,7 +66,7 @@ class UserRepository extends BaseRepository
         }
 
         return $this->model
-            ->with(['avatar:id,path'])
+            ->with($this->with)
             ->when(count($whereConditions) > 0, function($query) use ($whereConditions) {
                 $query->where($whereConditions);
             })
