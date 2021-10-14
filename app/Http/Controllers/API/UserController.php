@@ -39,14 +39,10 @@ class UserController extends Controller
             array_combine($tableFields1, $validatedData) : array_combine($tableFields2, $validatedData);
 
         $avatar = isset($inputs['avatar']) ? $inputs['avatar'] : null;
-        if($avatar) {
-            unset($inputs['avatar']);
-        }
+        unset($inputs['avatar']);
 
         $groups = isset($inputs['groups']) ? $inputs['groups'] : [config('custom_settings.default_group_id')];
-        if($groups) {
-            unset($inputs['groups']);
-        }
+        unset($inputs['groups']);
 
         $avatarDirectory = config('custom_settings.upload_paths.avatar');
 
@@ -110,14 +106,10 @@ class UserController extends Controller
         $user = $this->userRepository->getDetails($id);
 
         $avatar = isset($inputs['avatar']) ? $inputs['avatar'] : null;
-        if($avatar) {
-            unset($inputs['avatar']);
-        }
+        unset($inputs['avatar']);
 
         $groups = isset($inputs['groups']) ? $inputs['groups'] : [config('custom_settings.default_group_id')];
-        if($groups) {
-            unset($inputs['groups']);
-        }
+        unset($inputs['groups']);
 
         $avatarDirectory = config('custom_settings.upload_paths.avatar');
 
